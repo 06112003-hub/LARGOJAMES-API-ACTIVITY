@@ -1,68 +1,20 @@
-# LARGOJAMES-API-ACTIVITY - RESTful API Activity
+1. Markdown
+2. # RESTful API Activity - [ JAMES LARGO]
+3. ## Best Practices Implementation
+4. **1. Environment variables:**
+- Why did we put 'BASE_URI' in '.env' instad of hardcoding it?
+- Answer: We have placed BASE_URI in the.env file so that it can be safe and it is not seen in the code. It is also easy to alter the link without the need to edit the program.
 
-## Best Practices Implementation
+**2. Resource Modeling**
+- Why did we use plural nouns (e.g., '/dishes') for our routes?
+- Answer: We use plural nouns to indicate the route takes a form of collection or a list. It also make the system easier to understand and maintain.
 
-### 1. Environment Variables
-**Question:** Why did we put `BASE_URI` in `.env` instead of hardcoding it?
+**3. Status Codes:**
+- When do we use '201 Created' vs '200 Ok'?
+-  Answer:We use '201 Created' when a new resource is successfully created, such as after adding new data. We use '200 OK' when a request is successful but does not create anything new, like when fetching or updating data.
+- Why is it important to return '404' instead of just an empty array or a generic error?
+- Answer:Returning '404' clearly tells the user that the requested data was not found. It helps avoid confusion and lets the system know exactly what went wrong.
 
-**Answer:** Using `.env` allows flexibility across different environments (development, staging, production). The same code can run with different configurations without code changes. This keeps sensitive data out of version control and makes deployment easier.
+**4. Testing**
 
-### 2. Resource Modeling
-**Question:** Why did we use plural nouns (e.g., `/transactions`) for our routes?
-
-**Answer:** RESTful API conventions use plural nouns because routes represent collections of resources. `/transactions` represents the collection of all transactions, while `/transactions/:id` represents a specific transaction. This follows REST standards and makes the API intuitive.
-
-### 3. Status Codes
-**Question:** When do we use `201 Created` vs `200 OK`?
-
-**Answer:** 
-- `201 Created` - Use when a POST request successfully creates a new resource
-- `200 OK` - Use for successful GET, PUT, or DELETE requests that don't create new resources
-
-**Question:** Why is it important to return `404` instead of just an empty array or a generic error?
-
-**Answer:** `404 Not Found` explicitly tells the client that the requested resource doesn't exist. An empty array might suggest the query was successful but had no results. Using proper status codes helps clients understand what happened and handle errors appropriately.
-
-### 4. Transaction Endpoints
-
-**GET /api/v1/transactions** - Retrieve all transactions
-```json
-{
-  "status": 200,
-  "message": "Retrieved transactions successfully",
-  "data": [
-    {
-      "id": 1,
-      "description": "Starbucks Coffee",
-      "amount": 5.5,
-      "type": "expense",
-      "date": "2023-10-01"
-    }
-  ]
-}
-```
-
-**GET /api/v1/transactions?type=income** - Filter transactions
-```json
-{
-  "status": 200,
-  "message": "Retrieved transactions successfully",
-  "data": [
-    {
-      "id": 2,
-      "description": "Freelance Client Payment",
-      "amount": 500.0,
-      "type": "income",
-      "date": "2023-10-02"
-    }
-  ]
-}
-```
-
-**GET /api/v1/transactions** (No results)
-```json
-{
-  "status": 404,
-  "message": "No transactions found matching the criteria."
-}
-```
+- (Paste a ss)
